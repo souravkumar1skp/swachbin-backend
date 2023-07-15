@@ -26,9 +26,7 @@ router.get("/:id", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const check = await locate
-      .find({})
-      .select({ lat: 1, lng: 1, category: 1, description: 1 });
+    const check = await locate.find({}).populate("user_id");
     if (!check) return res.status(400).json({ error: "No data availaible" });
     res.status(200).send(check);
     res.end();

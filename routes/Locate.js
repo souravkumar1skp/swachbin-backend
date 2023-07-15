@@ -16,10 +16,8 @@ router.post(
     //check if given location is already present in our database or not
     try {
       const check = await Locate.findOne({
-        id: req.body.user_id,
         lat: req.body.lat,
-        lng: req.body.lng,
-        
+        lng: req.body.lng,        
       });
       if (check)
         return res
